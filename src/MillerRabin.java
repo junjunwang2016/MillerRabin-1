@@ -43,7 +43,7 @@ public class MillerRabin
 		BigInteger a;
 		do{
 			a = new BigInteger(n.bitLength(), r);
-		}while(a.compareTo(TWO) >= 0 && a.compareTo(n.subtract(TWO)) <= 0);
+		}while(a.compareTo(TWO) < 0 || a.compareTo(n.subtract(TWO)) > 0);
 	
 		BigInteger x = a.modPow(d, n);
 		
@@ -71,7 +71,7 @@ public class MillerRabin
 		
 		while(true)
 		{
-			System.out.println(MillerRabin(new BigInteger(in.next()), 50));
+			System.out.println(MillerRabin(new BigInteger(in.next()), 3));
 		}
 	}
 }
