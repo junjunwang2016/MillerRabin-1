@@ -7,11 +7,14 @@ import java.util.*;
 
 public class MillerRabin
 {	
-	private static BigInteger TWO = new BigInteger("2");
+	private static final BigInteger TWO = new BigInteger("2");
 	
 	//returns true if (probably) prime
 	public static boolean MillerRabin(BigInteger n, int k)
 	{
+		if(n.equals(TWO) || n.equals(BigInteger.valueOf(3)))
+			return true;
+		
 		//make sure not even input
 		if(n.mod(TWO).compareTo(BigInteger.ZERO) == 0)
 			return false;
@@ -53,7 +56,7 @@ public class MillerRabin
 		
 		for(int i = 0; i < s-1; i++)
 		{
-			x = x.modPow(TWO, n);
+			x = x.multiply(x).mod(n);
 			
 			if(x.compareTo(BigInteger.ONE) == 0)
 				return false;
@@ -71,7 +74,8 @@ public class MillerRabin
 		
 		while(true)
 		{
-			System.out.println(MillerRabin(new BigInteger(in.next()), 3));
+			BigInteger prime = new BigInteger(in.next());
+			System.out.println(MillerRabin(prime, 5));
 		}
 	}
 }
