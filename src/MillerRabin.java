@@ -22,7 +22,7 @@ public class MillerRabin
 		//factor n-1 -> d * 2^s
 		BigInteger d = n.subtract(BigInteger.ONE);
 		int s = 0;
-		while(n.mod(TWO).equals(BigInteger.ZERO))
+		while(d.mod(TWO).equals(BigInteger.ZERO))
 		{
 			d = d.divide(TWO);
 			s++;
